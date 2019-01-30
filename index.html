@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/all.css"/>
-  </head>
-  <body>
-    <h1>gulp</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo a quibusdam corrupti, hic sit laborum, qui quas magni explicabo modi, perferendis fugiat unde maiores! Debitis accusantium similique dolor expedita iusto.</p>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/all.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header bg-cover text-center">
+      <h1 class="text-white p-5">高雄旅遊網</h1>
+      <select class="header-select" id="header-select">
+        <option value="0" disabled selected="selected">--選擇行政區--</option>
+      </select>
+      <span class="header-hotarea bg-white p-3" >
+        <h5 class="">熱門行政區</h5>
+        <button href="#" class="btn btn-primary hotarea">苓雅區</button>
+        <button href="#" class="btn btn-primary hotarea">新興區</button>
+        <button href="#" class="btn btn-primary hotarea">內門區</button>
+      </span>
+    </header>
+
+    <div class="main bg-light p-5">
+      <div class="main-line mt-5 mb-5">
+        <span class="main-line-icon ">&nbsp;</span>
+      </div>
+      <h3 class="main-title text-center pb-5">--請選擇景點區域--</h3>
+      <div class="row list">       
+      </div>
+    </div>
+
+    <div class="footer text-center bg-info p-5">
+      <h5>高雄旅遊網</h5>
+      <span>資料來源: 高雄市政府</span>
+    </div>
+  </div>
+  <script src="js/all.js"></script>
+</body>
+
 </html>
