@@ -29,23 +29,23 @@ gulp.task('clean', function () {
     .pipe($.clean());
 });
 
-// gulp.task('copyHTML', function () {
-//   return gulp.src('./source/**/*.html')
-//     .pipe(gulp.dest('./public/'))
-// });
-//jade------
-gulp.task('jade', function () {
-  // var YOUR_LOCALS = {};
-
-  gulp.src('./source/**/*.jade')
-    .pipe($.plumber())
-    .pipe($.jade({
-      // locals: YOUR_LOCALS
-      pretty: true // 轉出時沒有壓縮html
-    }))
+gulp.task('copyHTML', function () {
+  return gulp.src('./source/**/*.html')
     .pipe(gulp.dest('./public/'))
-    .pipe(browserSync.stream());
 });
+//jade------
+// gulp.task('jade', function () {
+//   // var YOUR_LOCALS = {};
+
+//   gulp.src('./source/**/*.jade')
+//     .pipe($.plumber())
+//     .pipe($.jade({
+//       // locals: YOUR_LOCALS
+//       pretty: true // 轉出時沒有壓縮html
+//     }))
+//     .pipe(gulp.dest('./public/'))
+//     .pipe(browserSync.stream());
+// });
 //scss
 gulp.task('sass', function () {
   var plugins = [
@@ -57,7 +57,10 @@ gulp.task('sass', function () {
   return gulp.src('./source/scss/**/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
-    .pipe($.sass().on('error', $.sass.logError))
+    .pipe($.sass({
+      outputStyle: 'nested',
+      includePaths :['./node_modules/bootstrap/scss']
+    }).on('error', $.sass.logError))
     //編譯完成 css
     .pipe($.postcss(plugins))
     //輸出前壓縮(clean-css)
@@ -135,4 +138,4 @@ gulp.task('deploy', function () {
 gulp.task('build', gulpSequence('clean', 'jade', 'sass', 'babel', 'vendors'))
 
 //整合 default 用gulp可以全呼叫 'browser-sync', 'watch' 開發用的
-gulp.task('default', ['jade', 'sass', 'babel', 'vendors', 'browser-sync', 'imagemin', 'watch']);
+gulp.task('default', ['copyHTML', 'sass', 'babel', 'vendors', 'browser-sync', 'imagemin', 'watch']);
